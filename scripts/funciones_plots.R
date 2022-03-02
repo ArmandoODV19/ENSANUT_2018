@@ -43,7 +43,7 @@ daily_intake_state <- function(x = ensanut_limpia, state, x_name = "Frecuencia a
 
 
 ensanut_limpia %>%
-  filter(alimentos == "bebidas",
+  filter(alimentos == "uso_barro",
          estado == "Aguascalientes") %>%
   select(estado, frec_semana)  %>%
   count()
