@@ -309,7 +309,7 @@ ensanut_limpia %>%
   theme(plot.title = element_text(hjust = 0.5))+
   theme(legend.position="none")+
   xlab("alimentos")+
-  ylab("frecuencia")
+  ylab("frecuencia absoluta acumulada")
 
 
 
@@ -336,7 +336,7 @@ ensanut_limpia %>%
   theme(plot.title = element_text(hjust = 0.5))+
   theme(legend.position="none")+
   xlab("alimentos")+
-  ylab("frecuencia")
+  ylab("frecuencia absoluta acumulada")
 
 # plot 21
 # sin normalizar
@@ -362,7 +362,7 @@ ensanut_limpia %>%
   theme(plot.title = element_text(hjust = 0.5))+
   theme(legend.position="none")+
   xlab("alimentos")+
-  ylab("frecuencia")
+  ylab("frecuencia absoluta acumulada")
 
 
 # plot 22
@@ -384,7 +384,7 @@ ensanut_limpia %>%
   theme(plot.title = element_text(hjust = 0.5))+
   theme(legend.position="none")+
   xlab("alimentos")+
-  ylab("frecuencia")
+  ylab("frecuencia absoluta acumulada")
 
 
 
