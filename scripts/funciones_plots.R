@@ -8,7 +8,7 @@ ensanut_limpia <- readRDS("clean_data/ensanut_limpia.rds")
 # este plot permite evaluar la frecuencia de consumo de alimentos por semana
 # para cada estado
 
-week_intake_state <- function(x = ensanut_limpia, state, x_name = "Frecuencia a la semana",
+week_state_intake <- function(x = ensanut_limpia, state, x_name = "Frecuencia a la semana",
                               y_name = "", title_name, title_alig = 0.5){
   x %>%
     filter(estado == state) %>%
@@ -27,7 +27,7 @@ week_intake_state <- function(x = ensanut_limpia, state, x_name = "Frecuencia a 
 # funcion para plot 2
 # este plot permite evaluar frecuencia de consumo de alimentos al dia por estado
 
-daily_intake_state <- function(x = ensanut_limpia, state, x_name = "Frecuencia al dia",
+daily_state_intake <- function(x = ensanut_limpia, state, x_name = "Frecuencia al dia",
                                y_name = "", title_name, title_alig = 0.5){
   x %>%
     filter(estado == state) %>%
@@ -53,7 +53,7 @@ ensanut_limpia %>%
 # este plot permite evaluar frecuencia de consumo de botanas a la semana a nivel nacional
 # las botanas se pueden modificar por cualquier elemento de la columna de alimentos
 
-week_intake_food <- function(x = ensanut_limpia, food, x_name = "frecuencia a la semana",
+week_food_intake <- function(x = ensanut_limpia, food, x_name = "frecuencia a la semana",
                              y_name = "", title_name, title_alig = 0.5){
   x %>%
     filter(alimentos == food) %>%
@@ -71,7 +71,7 @@ week_intake_food <- function(x = ensanut_limpia, food, x_name = "frecuencia a la
 # plot de frecuencia de consumo de botanas a la semana por estado
 # se puede modificar el estado y el alimento
 
-week_intake_food_n_state <- function(x = ensanut_limpia, food, state,
+week_food_n_state_intake <- function(x = ensanut_limpia, food, state,
                                      x_name = "Frecuencia a la semana",
                                      y_name = "", title_name, title_alig = 0.5){
   x %>%
@@ -85,5 +85,24 @@ week_intake_food_n_state <- function(x = ensanut_limpia, food, state,
     theme(plot.title = element_text(hjust = title_alig))+
     theme(legend.position="none")
 }
+
+
+# funcion para plot 5
+# plot de frecuencia de consumo de botanas al dia a nivel nacional
+# las botanas se pueden modificar por cualquier elemento de la columna de alimentos
+
+daily_food_intake <- function(x = ensanut_limpia, food, x_name = "Frecuencia al dia",
+                              y_name = "", title_name, title_alig = 0.5){
+  x %>%
+    filter(alimentos == food) %>%
+    ggplot(aes(x = as.factor(frec_dia), fill = as.factor(frec_dia)))+
+    geom_bar()+
+    xlab(x_name)+
+    ylab(y_name)+
+    ggtitle(title_name)+
+    theme(plot.title = element_text(hjust = title_alig))+
+    theme(legend.position="none")
+}
+
 
 
