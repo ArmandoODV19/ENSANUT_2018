@@ -124,3 +124,41 @@ daily_food_n_state_intake <- function(x = ensanut_limpia, food, state,
     theme(legend.position="none")
 }
 
+
+# funcion para plot 16
+# consumo de botanas a la semana a por estado por dominio, por sexo por edad
+# se puede modificar el alimento, dominio, estado, sexo y edad categorica
+
+week_intake <- function(x = ensanut_limpia, food, state, domain, sex, age,
+                        x_name = "Frecuencia a la semana",
+                        y_name = "", title_name, title_alig = 0.5){
+  x %>%
+    filter(alimentos == food | dominio == domain | estado == state | sexo == sex | edad_categorica == age) %>%
+    ggplot(aes(x = as.factor(frec_semana), fill = as.factor(frec_semana)))+
+    geom_bar()+
+    xlab(x_name)+
+    ylab(y_name)+
+    ggtitle(title_name)+
+    theme(plot.title = element_text(hjust = title_alig))+
+    theme(legend.position="none")
+}
+
+
+
+week_intake(food = "bebidas", state = "Aguascalientes", domain = NULL, sex = NULL, age = NULL,
+            title_name = "prueba222",
+            title_alig = 1)
+
+ensanut_limpia %>%
+  filter(alimentos == "botanas",
+         dominio == "urbano",
+         estado == "Aguascalientes",
+         sexo == "hombre",
+         edad_categorica == "preescolares") %>%
+  ggplot(aes(x = as.factor(frec_semana), fill = as.factor(frec_semana)))+
+  geom_bar()+
+  xlab("Frecuencia a la semana")+
+  ylab("")+
+  ggtitle("consumo de botanas a la semana en Aguascalientes por dominio urbano en hombres preescolares")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(legend.position="none")
