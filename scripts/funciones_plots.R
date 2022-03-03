@@ -175,7 +175,7 @@ country_intake <- function(x = ensanut_limpia, title_name, title_alig = 0.5,
 }
 
 
-# funcion para plot 20
+# funcion para plot 21
 # consumo de alimentos filtrado por dominio, sexo, edad_categorica
 
 region_intake <- function(x = ensanut_limpia, zone, domain, sex, age,
@@ -204,5 +204,33 @@ region_intake <- function(x = ensanut_limpia, zone, domain, sex, age,
     xlab(x_name)+
     ylab(y_name)
 }
+
+
+
+# plot 22
+# frecuencia absoluta acumulada de consumo de alimentos por estado
+
+abs_week_intake <- function(x = ensanut_limpia, state,
+                            title_name, title_alig = 0.5,
+                            x_name = "alimentos",
+                            y_name = "frecuencia absoluta acumulada"){
+  x %>%
+    filter(estado == state) %>%
+    group_by(alimentos, estado) %>%
+    summarise_at(vars(frec_semana),
+                 list(name = sum)) %>%
+    ggplot(aes(x=alimentos, y=name, fill = alimentos))+
+    geom_bar(stat = "identity")+
+    theme(axis.text.x = element_text(size = 10, angle = 90, hjust = 1),
+          axis.text.y = element_text(size = 10),
+          panel.border=element_blank(),
+          strip.background=element_rect(colour="white", fill="white"))+
+    ggtitle(title_name)+
+    theme(plot.title = element_text(hjust = title_alig))+
+    theme(legend.position="none")+
+    xlab(x_name)+
+    ylab(y_name)
+}
+
 
 
