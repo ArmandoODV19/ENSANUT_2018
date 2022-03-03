@@ -8,8 +8,9 @@ ensanut_limpia <- readRDS("clean_data/ensanut_limpia.rds")
 # este plot permite evaluar la frecuencia de consumo de alimentos por semana
 # para cada estado
 
-week_state_intake_plot <- function(x = ensanut_limpia, state, x_name = "Frecuencia a la semana",
-                              y_name = "", title_name, title_alig = 0.5){
+week_state_intake_plot <- function(x = ensanut_limpia, state,
+                                   x_name = "Frecuencia a la semana",
+                                   y_name = "", title_name, title_alig = 0.5){
   x %>%
     filter(estado == state) %>%
     ggplot(aes(x = as.factor(frec_semana), fill = as.factor(frec_semana)))+
@@ -27,8 +28,9 @@ week_state_intake_plot <- function(x = ensanut_limpia, state, x_name = "Frecuenc
 # funcion para plot 2
 # este plot permite evaluar frecuencia de consumo de alimentos al dia por estado
 
-daily_state_intake_plot <- function(x = ensanut_limpia, state, x_name = "Frecuencia al dia",
-                               y_name = "", title_name, title_alig = 0.5){
+daily_state_intake_plot <- function(x = ensanut_limpia, state,
+                                    x_name = "Frecuencia al dia",
+                                    y_name = "", title_name, title_alig = 0.5){
   x %>%
     filter(estado == state) %>%
     ggplot(aes(x = as.factor(frec_dia), fill = as.factor(frec_dia)))+
@@ -53,8 +55,9 @@ ensanut_limpia %>%
 # este plot permite evaluar frecuencia de consumo de botanas a la semana a nivel nacional
 # las botanas se pueden modificar por cualquier elemento de la columna de alimentos
 
-week_food_intake_plot <- function(x = ensanut_limpia, food, x_name = "frecuencia a la semana",
-                             y_name = "", title_name, title_alig = 0.5){
+week_food_intake_plot <- function(x = ensanut_limpia, food,
+                                  x_name = "frecuencia a la semana",
+                                  y_name = "", title_name, title_alig = 0.5){
   x %>%
     filter(alimentos == food) %>%
     ggplot(aes(x = as.factor(frec_semana), fill = as.factor(frec_semana)))+
