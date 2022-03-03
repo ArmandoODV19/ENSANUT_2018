@@ -105,4 +105,22 @@ daily_food_intake <- function(x = ensanut_limpia, food, x_name = "Frecuencia al 
 }
 
 
+# funcion para plot 6
+# plot de frecuencia de consumo de botanas al dia por estado
+# se puede modificar el estado y el alimento
+
+daily_food_n_state_intake <- function(x = ensanut_limpia, food, state,
+                                      x_name = "Frecuencia al dia",
+                                      y_name = "", title_name, title_alig = 0.5){
+  x %>%
+    filter(alimentos == food,
+           estado == state) %>%
+    ggplot(aes(x = as.factor(frec_dia), fill = as.factor(frec_dia)))+
+    geom_bar()+
+    xlab(x_name)+
+    ylab(y_name)+
+    ggtitle(title_name)+
+    theme(plot.title = element_text(hjust = title_alig))+
+    theme(legend.position="none")
+}
 
