@@ -210,7 +210,7 @@ region_intake_plot <- function(x = ensanut_limpia, zone, domain, sex, age,
 # plot 22
 # frecuencia absoluta acumulada de consumo de alimentos por estado
 
-abs_week_intake_plot <- function(x = ensanut_limpia, state,
+abs_week_state_intake_plot <- function(x = ensanut_limpia, state,
                             title_name, title_alig = 0.5,
                             x_name = "alimentos",
                             y_name = "frecuencia absoluta acumulada"){
@@ -233,4 +233,28 @@ abs_week_intake_plot <- function(x = ensanut_limpia, state,
 }
 
 
+# funcion para plot 23
+# consumo de alimentos por estado filtrado por dominio, sexo, edad_categorica
 
+filter_abs_week_
+
+ensanut_limpia %>%
+  select(alimentos, estado, dominio, sexo, edad_categorica, frec_semana) %>%
+  filter(estado == "Aguascalientes",
+         dominio == "urbano",
+         sexo == "hombre",
+         edad_categorica == "preescolares") %>%
+  group_by(alimentos, estado) %>%
+  summarise_at(vars(frec_semana),
+               list(name = sum)) %>%
+  ggplot(aes(x=alimentos, y=name, fill = alimentos))+
+  geom_bar(stat = "identity")+
+  theme(axis.text.x = element_text(size = 10, angle = 90, hjust = 1),
+        axis.text.y = element_text(size = 10),
+        panel.border=element_blank(),
+        strip.background=element_rect(colour="white", fill="white"))+
+  ggtitle("consumo de alimentos en Aguascalientes en zona urbana en hombres preescolares")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(legend.position="none")+
+  xlab("alimentos")+
+  ylab("frecuencia")
