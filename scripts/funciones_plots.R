@@ -8,7 +8,7 @@ ensanut_limpia <- readRDS("clean_data/ensanut_limpia.rds")
 # este plot permite evaluar la frecuencia de consumo de alimentos por semana
 # para cada estado
 
-week_state_intake <- function(x = ensanut_limpia, state, x_name = "Frecuencia a la semana",
+week_state_intake_plot <- function(x = ensanut_limpia, state, x_name = "Frecuencia a la semana",
                               y_name = "", title_name, title_alig = 0.5){
   x %>%
     filter(estado == state) %>%
@@ -27,7 +27,7 @@ week_state_intake <- function(x = ensanut_limpia, state, x_name = "Frecuencia a 
 # funcion para plot 2
 # este plot permite evaluar frecuencia de consumo de alimentos al dia por estado
 
-daily_state_intake <- function(x = ensanut_limpia, state, x_name = "Frecuencia al dia",
+daily_state_intake_plot <- function(x = ensanut_limpia, state, x_name = "Frecuencia al dia",
                                y_name = "", title_name, title_alig = 0.5){
   x %>%
     filter(estado == state) %>%
@@ -53,7 +53,7 @@ ensanut_limpia %>%
 # este plot permite evaluar frecuencia de consumo de botanas a la semana a nivel nacional
 # las botanas se pueden modificar por cualquier elemento de la columna de alimentos
 
-week_food_intake <- function(x = ensanut_limpia, food, x_name = "frecuencia a la semana",
+week_food_intake_plot <- function(x = ensanut_limpia, food, x_name = "frecuencia a la semana",
                              y_name = "", title_name, title_alig = 0.5){
   x %>%
     filter(alimentos == food) %>%
@@ -71,7 +71,7 @@ week_food_intake <- function(x = ensanut_limpia, food, x_name = "frecuencia a la
 # plot de frecuencia de consumo de botanas a la semana por estado
 # se puede modificar el estado y el alimento
 
-week_food_n_state_intake <- function(x = ensanut_limpia, food, state,
+week_food_n_state_intake_plot <- function(x = ensanut_limpia, food, state,
                                      x_name = "Frecuencia a la semana",
                                      y_name = "", title_name, title_alig = 0.5){
   x %>%
@@ -91,7 +91,7 @@ week_food_n_state_intake <- function(x = ensanut_limpia, food, state,
 # plot de frecuencia de consumo de botanas al dia a nivel nacional
 # las botanas se pueden modificar por cualquier elemento de la columna de alimentos
 
-daily_food_intake <- function(x = ensanut_limpia, food, x_name = "Frecuencia al dia",
+daily_food_intake_plot <- function(x = ensanut_limpia, food, x_name = "Frecuencia al dia",
                               y_name = "", title_name, title_alig = 0.5){
   x %>%
     filter(alimentos == food) %>%
@@ -109,7 +109,7 @@ daily_food_intake <- function(x = ensanut_limpia, food, x_name = "Frecuencia al 
 # plot de frecuencia de consumo de botanas al dia por estado
 # se puede modificar el estado y el alimento
 
-daily_food_n_state_intake <- function(x = ensanut_limpia, food, state,
+daily_food_n_state_intake_plot <- function(x = ensanut_limpia, food, state,
                                       x_name = "Frecuencia al dia",
                                       y_name = "", title_name, title_alig = 0.5){
   x %>%
@@ -129,7 +129,7 @@ daily_food_n_state_intake <- function(x = ensanut_limpia, food, state,
 # consumo de botanas a la semana a por estado por dominio, por sexo por edad
 # se puede modificar el alimento, dominio, estado, sexo y edad categorica
 
-week_intake <- function(x = ensanut_limpia, food, state, domain, sex, age,
+week_intake_plot <- function(x = ensanut_limpia, food, state, domain, sex, age,
                         x_name = "Frecuencia a la semana",
                         y_name = "", title_name, title_alig = 0.5){
   x %>%
@@ -152,7 +152,7 @@ week_intake(food = "bebidas", state = "Aguascalientes", domain = NULL, sex = NUL
 # plot 19
 # frecuencia de consumo de alimentos en el pais
 
-country_intake <- function(x = ensanut_limpia, title_name, title_alig = 0.5,
+country_intake_plot <- function(x = ensanut_limpia, title_name, title_alig = 0.5,
                            x_name = "alimentos",
                            y_name = "frecuencia absoluta acumulada"){
   x %>%
@@ -178,7 +178,7 @@ country_intake <- function(x = ensanut_limpia, title_name, title_alig = 0.5,
 # funcion para plot 21
 # consumo de alimentos filtrado por dominio, sexo, edad_categorica
 
-region_intake <- function(x = ensanut_limpia, zone, domain, sex, age,
+region_intake_plot <- function(x = ensanut_limpia, zone, domain, sex, age,
                           title_name, title_alig = 0.5,
                           x_name = "alimentos",
                           y_name = "frecuencia absoluta acumulada"){
@@ -210,7 +210,7 @@ region_intake <- function(x = ensanut_limpia, zone, domain, sex, age,
 # plot 22
 # frecuencia absoluta acumulada de consumo de alimentos por estado
 
-abs_week_intake <- function(x = ensanut_limpia, state,
+abs_week_intake_plot <- function(x = ensanut_limpia, state,
                             title_name, title_alig = 0.5,
                             x_name = "alimentos",
                             y_name = "frecuencia absoluta acumulada"){
